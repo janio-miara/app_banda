@@ -133,25 +133,25 @@ const ModalCreateEvento = () => {
                   onChange={newValue => setSelectedDate(newValue)}
                   minDate={dayjs()}
                   views={['year', 'month', 'day']}
-                  renderInput={params => <TextField {...params} fullWidth margin="dense" variant="outlined" />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
                 <MobileTimePicker
                   label="Hora de Montagem"
                   value={horaMontagem}
                   onChange={newValue => setHoraMontagem(newValue)}
-                  renderInput={params => <TextField {...params} fullWidth margin="dense" variant="outlined" />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
                 <MobileTimePicker
                   label="Hora de Passagem de Som"
                   value={horaPassagemSom}
                   onChange={newValue => setHoraPassagemSom(newValue)}
-                  renderInput={params => <TextField {...params} fullWidth margin="dense" variant="outlined" />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
                 <MobileTimePicker
                   label="Hora do Show"
                   value={horaShow}
                   onChange={newValue => setHoraShow(newValue)}
-                  renderInput={params => <TextField {...params} fullWidth margin="dense" variant="outlined" />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
               </LocalizationProvider>
 

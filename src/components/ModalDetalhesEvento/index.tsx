@@ -125,28 +125,29 @@ const ModalDetalhesEvento: React.FC<ModalDetalhesEventoProps> = ({ open, handleC
                   value={selectedDate}
                   disabled={!isAdmin}
                   onChange={newValue => setSelectedDate(newValue)}
-                  renderInput={(params: any) => <TextField {...params} fullWidth disabled={!isAdmin} />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
+
                 <TimePicker
                   label="Hora de Montagem"
                   value={horaMontagem}
                   disabled={!isAdmin}
                   onChange={newValue => setHoraMontagem(newValue)}
-                  renderInput={(params: any) => <TextField {...params} fullWidth disabled={!isAdmin} />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
                 <TimePicker
                   label="Hora de Passagem de Som"
                   value={horaPassagemSom}
                   disabled={!isAdmin}
                   onChange={newValue => setHoraPassagemSom(newValue)}
-                  renderInput={(params: any) => <TextField {...params} fullWidth disabled={!isAdmin} />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
                 <TimePicker
                   label="Hora do Show"
                   disabled={!isAdmin}
                   value={horaShow}
                   onChange={newValue => setHoraShow(newValue)}
-                  renderInput={(params: any) => <TextField {...params} fullWidth disabled={!isAdmin} />}
+                  {...({ renderInput: (params: any) => <TextField {...params} fullWidth disabled={!isAdmin} /> } as any)}
                 />
               </Box>
             </LocalizationProvider>

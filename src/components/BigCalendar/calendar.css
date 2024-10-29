@@ -1,0 +1,96 @@
+.rbc-allday-cell {
+    display: none;
+}
+
+.rbc-allday-header {
+    display: none;
+}
+
+/* Estilos principais do calendário */
+.rbc-calendar {
+    background-color: transparent;
+    border: none;
+}
+.rbc-time-header{
+    background-color: transparent;
+    border: none;
+}
+/* Header do calendário (dias da semana) */
+.rbc-header {
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 100px;
+    text-align: center;
+}
+
+/* Barra superior com os controles (navegação e título) */
+.rbc-toolbar {
+    background-color: transparent;
+    color: #006666;
+    padding: 10px;
+}
+.rbc-time-content{
+    border: 1px solid #dbdede;
+}
+.rbc-time-view{
+    background-color: transparent;
+    border: none;
+}
+
+.rbc-label{
+    border: none;
+}
+.rbc-time-header-gutter{
+    border: none;
+}
+
+.rbc-toolbar button {
+    background-color: #006666;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rbc-toolbar button:hover {
+    background-color: #008584;
+}
+
+/* Background de cada célula de tempo */
+.rbc-time-slot {
+    background-color: transparent;
+    border-bottom: none;
+}
+
+/* Estilo de eventos */
+.rbc-event {
+    background-color: #316cee;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 16px;
+    font-weight: bold;
+    opacity: 0.8;
+    border: none;
+}
+
+.rbc-time-header-content{
+    border: none;
+    margin: 0;
+
+}
+.rbc-time-view-resources .rbc-time-gutter, .rbc-time-view-resources .rbc-time-header-gutter {
+    z-index: 8;
+    font-size: 14px;
+}
+.rbc-time-header-content > .rbc-row.rbc-row-resource{
+    border: none;
+}
+
+
+
+
+
+

@@ -8,9 +8,10 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 
 import './App.css'
-import { AuthProvider, useAuth } from 'Providers/AuthContext'
+
 import darkTheme from './Theme/theme'
 import Providers from './Providers'
+import {useAuth} from "./Providers/AuthContext";
 
 const App: React.FC = () => {
   return (

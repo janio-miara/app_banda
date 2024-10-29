@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
               },
             }}
           >
-            {events.map(event => (
+            {events.map((event:any) => (
               <TimelineItem key={event.id}>
                 <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary">
                   {new Date(event.dataEvento).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit' })}

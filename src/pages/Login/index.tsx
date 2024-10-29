@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, TextField, Button, Box, Avatar, CircularProgress, Typography } from '@mui/material'
-import { logoBanda, backgroundDark } from 'assets/images'
 import api, { defaultsHeadersAxios } from '../../services/api'
 import { setItem, setItemObjetc } from '../../utils/persistenceUtils'
 import { TOKEN_KEY, USER_CONFIG } from '../../utils/constants'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Providers/AuthContext'
+import {backgroundDark, logoBanda} from "../../assets/images";
 
 const Login: React.FC = () => {
   const [email, setEmail] = React.useState('')

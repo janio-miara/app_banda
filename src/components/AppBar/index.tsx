@@ -14,11 +14,11 @@ import ModalCreateContractor from '../ModalListContract'
 import ModalCreateUser from '../CreateUser'
 import { useAuth } from '../../Providers/AuthContext'
 import { useEvent } from '../../Providers/EventContext'
-import { Paragraph } from 'w-design-system'
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined'
 import { Card } from '@mui/material'
 import { deleteItem } from '../../utils/persistenceUtils'
 import { useNavigate } from 'react-router-dom'
+import {Paragraph} from "w-design-system";
 
 function ResponsiveAppBar() {
   const { user } = useAuth()

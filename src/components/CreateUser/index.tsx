@@ -50,7 +50,7 @@ const ModalCreateUser = () => {
         name,
         email,
         password,
-        bandId: Number(3),
+        bandId: Number(1),
         role,
         avatarUrl,
         valorCache: parseFloat(valorCache.replace(/[R$.,]/g, '')) / 100 || 0, // Conversão para valor numérico

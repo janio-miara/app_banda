@@ -5,7 +5,7 @@ import {TOKEN_KEY} from "../utils/constants";
 
 
 const api = axios.create({
-  baseURL: 'http://ec2-52-14-112-165.us-east-2.compute.amazonaws.com:4000/',
+  baseURL: 'https://agendabanda.com/',
 })
 
 const defaultsHeadersAxios = (token: string) => {

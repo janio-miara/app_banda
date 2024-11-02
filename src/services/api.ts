@@ -18,7 +18,7 @@ api.interceptors.response.use(
     const userToken = getItem(TOKEN_KEY)
     if (error.response.status === 401 && !!userToken) {
       deleteItem(TOKEN_KEY)
-      window.location.href = '/logout'
+      window.location.href = '/login'
     }
     return Promise.reject(error)
   }

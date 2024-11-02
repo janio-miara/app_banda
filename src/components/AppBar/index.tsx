@@ -87,23 +87,6 @@ function ResponsiveAppBar() {
         <MenuItem onClick={handleEditUser}>Editar Usuário</MenuItem>
         <MenuItem onClick={handleLogout}>Sair</MenuItem>
       </Menu>
-
-      <Card
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '16px',
-        }}
-      >
-        <ModalCreateUser />
-        <ModalCreateEvento />
-        <ModalCreateContractor />
-
-        <Fab aria-label="like" size={'small'}>
-          <CalendarMonthOutlinedIcon />
-        </Fab>
-      </Card>
     </div>
   )
 }

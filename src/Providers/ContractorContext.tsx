@@ -4,12 +4,15 @@ import api from '../services/api'
 interface IContractorContextType {
   contractors: any[]
   listContract: any
+  showModalContractor: boolean
+  setShowModalContractor: any
 }
 
 const ContractorContext = createContext<IContractorContextType | undefined>(undefined)
 
 export const ContractorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [contractors, setContractors] = useState([])
+  const [showModalContractor, setShowModalContractor] = useState(false)
 
   const listContract = async () => {
     try {
@@ -24,7 +27,7 @@ export const ContractorProvider: React.FC<{ children: ReactNode }> = ({ children
     listContract()
   }, [])
 
-  return <ContractorContext.Provider value={{ contractors, listContract }}>{children}</ContractorContext.Provider>
+  return <ContractorContext.Provider value={{ contractors, listContract, showModalContractor, setShowModalContractor }}>{children}</ContractorContext.Provider>
 }
 
 export const useContractor = (): IContractorContextType => {

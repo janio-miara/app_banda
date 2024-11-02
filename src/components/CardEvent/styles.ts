@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+export const Container= styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 8px;
+    height: 130px;
+    background: #75b4e642;
+    padding: 16px;
+    margin: 16px 0;
+`
+
 export const ContainerHora = styled.div`
   display: flex;
   flex-direction: column;

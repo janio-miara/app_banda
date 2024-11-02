@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import {
   Button,
   Dialog,
@@ -17,8 +17,11 @@ import AddBusinessOutlinedIcon from '@mui/icons-material/AddBusinessOutlined'
 import { useContractor } from '../../Providers/ContractorContext'
 import { useAuth } from '../../Providers/AuthContext'
 
-const ModalCreateContractor = () => {
-  const [open, setOpen] = useState(false)
+interface IContractor {
+    showModalContractor: boolean
+    setShowModalContractor: any
+}
+const ModalCreateContractor = ({showModalContractor, setShowModalContractor}: IContractor) => {
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [phone, setPhone] = useState('')
@@ -26,16 +29,18 @@ const ModalCreateContractor = () => {
   const [logoUrl, setLogoUrl] = useState('')
   const [valorCache, setValorCache] = useState<string>('')
   const { listContract } = useContractor()
-  const { isAdmin } = useAuth()
-  const handleClickOpen = () => {
-    setOpen(true)
-    setValorCache('')
+
+
+
+  const handleClose = () => {
+    setShowModalContractor(false)
     setName('')
-    setPhone('')
     setAddress('')
+    setPhone('')
+    setDescription('')
     setLogoUrl('')
+    setValorCache('')
   }
-  const handleClose = () => setOpen(false)
 
   const handleCreateContractor = async () => {
     if (!name) {
@@ -75,10 +80,7 @@ const ModalCreateContractor = () => {
 
   return (
     <>
-      <Fab color="warning" aria-label="edit" size="small" onClick={handleClickOpen} disabled={!isAdmin}>
-        <AddBusinessOutlinedIcon />
-      </Fab>
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+      <Dialog open={showModalContractor} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>
           <Box display="flex" gap="8px" alignItems="center">
             <AddIcon />

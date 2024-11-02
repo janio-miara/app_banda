@@ -12,8 +12,9 @@ import api from '../../services/api'
 import CardEvent from '../../components/CardEvent'
 import ModalCreateEvento from '../../components/ModalCreateEvent'
 import { ContainerDashboard } from './styles'
-import ResponsiveAppBar from '../../components/AppBar'
 import { useEvent } from '../../Providers/EventContext'
+import BottomMenu from "../../components/MenuSiBar/BottomMenu";
+import ResponsiveAppBar from "../../components/AppBar";
 
 interface Event {
   id: number
@@ -49,30 +50,17 @@ const Dashboard: React.FC = () => {
         ) : error ? (
           <Typography color="error">{error}</Typography>
         ) : (
-          <Timeline
-            sx={{
-              [`& .${timelineOppositeContentClasses.root}`]: {
-                flex: 0.1,
-              },
-            }}
-          >
+          <div>
             {events.map((event:any) => (
-              <TimelineItem key={event.id}>
-                <TimelineOppositeContent sx={{ m: 'auto 0' }} variant="body2" color="text.secondary">
-                  {new Date(event.dataEvento).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit' })}
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent>
-                  <CardEvent event={event} />
-                </TimelineContent>
-              </TimelineItem>
+                <CardEvent event={event} />
             ))}
-          </Timeline>
+          </div>
         )}
       </div>
+      <div className={'footer'}>
+        <BottomMenu />
+      </div>
+
     </ContainerDashboard>
   )
 }

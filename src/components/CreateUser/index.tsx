@@ -20,8 +20,12 @@ import AddBusinessOutlinedIcon from '@mui/icons-material/AddBusinessOutlined'
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined'
 import { useAuth } from '../../Providers/AuthContext'
 
-const ModalCreateUser = () => {
-  const [open, setOpen] = useState(false)
+interface IUser {
+  showModalUser: boolean
+    setShowModalUser: any
+}
+
+const ModalCreateUser = ({showModalUser, setShowModalUser}: IUser) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,13 +35,13 @@ const ModalCreateUser = () => {
   const { isAdmin } = useAuth()
 
   const handleClickOpen = () => {
-    setOpen(true)
+    setShowModalUser(true)
     setName('')
     setEmail('')
     setPassword('')
     setAvatarUrl('')
   }
-  const handleClose = () => setOpen(false)
+  const handleClose = () => setShowModalUser(false)
 
   const handleCreateUser = async () => {
     if (!name || !email || !password) {
@@ -76,10 +80,7 @@ const ModalCreateUser = () => {
 
   return (
     <>
-      <Fab color="primary" aria-label="add" size="small" onClick={handleClickOpen} disabled={!isAdmin}>
-        <PersonAddAlt1OutlinedIcon />
-      </Fab>
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+      <Dialog open={showModalUser} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>
           <Box display="flex" gap="8px" alignItems="center">
             <AddBusinessOutlinedIcon />

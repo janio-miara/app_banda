@@ -31,8 +31,14 @@ import { formatCurrency, parseCurrency } from '../../utils/helpes'
 import ModalCreateContractor from '../ModalListContract'
 import { useEvent } from '../../Providers/EventContext'
 import { useAuth } from '../../Providers/AuthContext'
+import AddBusinessOutlinedIcon from "@mui/icons-material/AddBusinessOutlined";
 
-const ModalCreateEvento = () => {
+interface IEvent {
+    showModalEvent: boolean
+    setShowModalEvent: any
+}
+
+const ModalCreateEvento = ({showModalEvent, setShowModalEvent}: IEvent) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null)
   const [horaMontagem, setHoraMontagem] = useState<Dayjs | null>(null)
   const [horaPassagemSom, setHoraPassagemSom] = useState<Dayjs | null>(null)
@@ -43,14 +49,27 @@ const ModalCreateEvento = () => {
   const [statusEvento, setStatusEvento] = useState('Agendado')
   const [alimentacaoInclusa, setAlimentacaoInclusa] = useState(false)
   const [vanInclusa, setVanInclusa] = useState(false)
-  const [valor, setValor] = useState('R$ 1.800,00') // Valor com máscara inicial
-  const [open, setOpen] = useState(false)
+  const [valor, setValor] = useState('') // Valor com máscara inicial
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  const [showModalContractor, setShowModalContractor] = useState(false);
+
   const { contractors } = useContractor()
   const { listEvent } = useEvent()
   const { isAdmin } = useAuth()
-  const handleClickOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleClose = () =>  {
+    setSelectedDate(null)
+    setHoraMontagem(null)
+    setHoraPassagemSom(null)
+    setHoraShow(null)
+    setContratante('')
+    setNome('')
+    setDescricao('')
+    setStatusEvento('Agendado')
+    setAlimentacaoInclusa(false)
+    setVanInclusa(false)
+    setValor('')
+    setShowModalEvent(false)
+  }
 
   useEffect(() => {
     setIsButtonDisabled(!contratante || !selectedDate)
@@ -86,10 +105,7 @@ const ModalCreateEvento = () => {
 
   return (
     <>
-      <Fab color="secondary" aria-label="edit" size="small" onClick={handleClickOpen} disabled={!isAdmin}>
-        <EditCalendarOutlinedIcon />
-      </Fab>
-      <Dialog open={open} onClose={handleClose} fullScreen>
+      <Dialog open={showModalEvent} onClose={handleClose} fullScreen>
         <DialogTitle>
           <Box display="flex" gap="8px" alignItems="center">
             <EditCalendarOutlinedIcon />
@@ -113,7 +129,9 @@ const ModalCreateEvento = () => {
                     </MenuItem>
                   ))}
                 </Select>
-                <ModalCreateContractor />
+                <Fab color="warning" aria-label="edit" size="small" onClick={() => setShowModalContractor(true)} disabled={!isAdmin}>
+                  <AddBusinessOutlinedIcon />
+                </Fab>
               </FormControl>
 
               <TextField
@@ -221,6 +239,8 @@ const ModalCreateEvento = () => {
         </DialogActions>
         <br />
       </Dialog>
+      <ModalCreateContractor showModalContractor={showModalContractor} setShowModalContractor={setShowModalContractor}/>
+
     </>
   )
 }

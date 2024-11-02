@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Card, CardContent, Divider, IconButton, Typography } from '@mui/material'
 import { formatHora } from '../../utils/helpes'
-import { ContainerHora, WrapperHora } from './styles'
+import {Container, ContainerHora, WrapperHora} from './styles'
 import ModalDetalhesEvento from '../ModalDetalhesEvento'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditCalendarOutlinedIcon from '@mui/icons-material/EditCalendarOutlined'
@@ -23,10 +23,13 @@ const CardEvent = ({ event }: any) => {
 
   return (
     <>
-      <Card>
-        <CardContent>
+      <Container>
           <Box display="flex" justifyContent={'space-between'} gap="8px" alignItems={'center'}>
-            <Typography variant="h6">{event.contratante.name}</Typography>
+            <div>
+              <Typography variant="h6" sx={{opacity: 0.6}}><b>{new Date(event.dataEvento).toLocaleDateString(undefined, { month: '2-digit', day: '2-digit' })}</b>
+            </Typography>
+            <Typography variant="body2"> {event.contratante.name}</Typography>
+            </div>
             <Box display="flex" justifyContent={'space-between'} gap="8px" alignItems={'center'}>
               <IconButton aria-label="delete" size="small" onClick={handleClickOpen}>
                 <InfoOutlinedIcon />
@@ -55,8 +58,7 @@ const CardEvent = ({ event }: any) => {
               </Typography>
             </ContainerHora>
           </WrapperHora>
-        </CardContent>
-      </Card>
+      </Container>
       <ModalDetalhesEvento event={event} open={open} handleClose={handleClose} />
     </>
   )
